@@ -1,23 +1,37 @@
 package com.example.moregrowth.mapper;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.mongodb.repository.cdi.MongoRepositoryBean;
+import org.springframework.stereotype.Repository;
 
 import com.example.moregrowth.model.Enquiry;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface EnquiryRepository extends MongoRepository<Enquiry,String>{
-    //seems all the methods are already exist in MangoDB
-
-
-
-    //enquiryRepository.insert(enquiryInstance)
+@Repository
+public interface EnquiryRepository extends MongoRepository<Enquiry, String> {
+    // Seems basic methods are all included in the MongoDB original library
 
 
-    
-   /*  Enquiry selectById(Long id);
+    @Query
+    public List<Enquiry> findByName(String name);
 
-    Boolean insert(Enquiry data);
+    @Query
+    public List<Enquiry> findByPhoneNumber(String phoneNumber);
 
-    long update(Enquiry data); */
+    public long countByTransactionOutcome(String prediction);
+
+    public long countByStatus(String string);
+
+    public long countByDate(Date date);
+
+    public long countByContactMethod(String contactMethod);
+
+    @Query(value = "{ 'date' : ?0, 'transactionOutcome' : ?1 }", count = true)
+    public long countByDateAndTransactionOutcome(Date date, String outcome);
+
+    @Query
+    public List<Enquiry> findByTransactionOutcome(String transactionOutcome);
+
 }
