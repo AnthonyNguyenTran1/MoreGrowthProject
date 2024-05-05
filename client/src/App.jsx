@@ -1,12 +1,23 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import RouterPages from './pages/routerPages'
 
+// Layout
+import BaseLayout from '../layouts/baseLayout'
+
+// Pages
+import DashBoardPage from './pages/dashBoardPage'
+import EnquiryManagementPage from './pages/enquiryManagementPage'
+import MarketAnalysisPage from './pages/marketAnalysisPage'
 
 function App() {
-
   return (
-    <RouterPages/>
+    <Routes>
+      <Route element={<BaseLayout />}>
+        <Route path="/" element={<DashBoardPage />} />
+        <Route path="enquiry_management" element={<EnquiryManagementPage />} />
+        <Route path="market_analysis" element={<MarketAnalysisPage />} />
+      </Route>
+    </Routes>
   )
 }
 
