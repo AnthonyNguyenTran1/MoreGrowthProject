@@ -94,7 +94,7 @@ public class PredictionService {
             Files.write(tempFile, enquiryJson.getBytes(StandardCharsets.UTF_8));
 
             // use python script and set the file path
-            ProcessBuilder processBuilder = new ProcessBuilder("/home/ec2-user/.local/lib/python3.9/", tempScript.getAbsolutePath(), tempModelFile.getAbsolutePath(), tempFile.toString());
+            ProcessBuilder processBuilder = new ProcessBuilder("python", tempScript.getAbsolutePath(), tempModelFile.getAbsolutePath(), tempFile.toString());
             // combine the error info and output infor
             processBuilder.redirectErrorStream(true); 
             Process process = processBuilder.start();

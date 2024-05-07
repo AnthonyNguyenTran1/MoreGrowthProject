@@ -8,7 +8,6 @@ class MoregrowthApplicationTests {
 
 	@Test
 	void contextLoads() {
-		
 	}
 
 }
