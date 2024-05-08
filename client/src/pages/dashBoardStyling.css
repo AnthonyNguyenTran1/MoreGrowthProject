@@ -1,0 +1,82 @@
+.dashBoardStyle {
+  /* display: flex; */
+}
+
+.pageHeaderStyle {
+  margin-left: 3%;
+  margin-top: 3%;
+  display: flex;
+}
+
+.dataCard {
+  margin: 3%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dataCards {
+  display: flex;
+  width: 100%;
+}
+
+.totalLeads {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.totalLeadsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 14%;
+  margin-top: 10%;
+}
+
+.totalLeadsValueTop {
+  font-weight: 600;
+}
+
+.totalLeadsValueBottom {
+  font-size: small;
+}
+
+.conversionRate {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversionRateValue {
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+}
+
+.cardDataHeader {
+  font-size: 20px;
+  font-weight: 650;
+  margin-bottom: 10px;
+}
+
+.leadQuality {
+  height: 340px;
+  width: 300px;
+}
+
+.methOfEnq {
+  height: 350px;
+}
+
+.status {
+  display: flex;
+  gap: 16%;
+}
+
+.statusValue {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
