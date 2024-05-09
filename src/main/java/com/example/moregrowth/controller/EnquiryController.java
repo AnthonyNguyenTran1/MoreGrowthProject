@@ -20,6 +20,7 @@ import com.example.moregrowth.service.EnquiryService;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class EnquiryController {
 
     @Autowired
@@ -29,7 +30,6 @@ public class EnquiryController {
      * Search Functions
      */
     //view all the enquiries
-    @CrossOrigin
     @GetMapping("/all")
     public List<Enquiry> getAll() {
         return enquiryService.getAllEnquiries();
