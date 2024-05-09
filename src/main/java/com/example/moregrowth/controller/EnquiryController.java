@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.moregrowth.model.Enquiry;
 import com.example.moregrowth.service.EnquiryService;
 
+
 @RestController
 public class EnquiryController {
 
@@ -139,4 +140,11 @@ public class EnquiryController {
     public void deleteEnquiry(@PathVariable String id) {
         EnquiryService.deleteById(id);
     }
+
+    //get number of different level of income
+    @GetMapping("incomelevel/{level}")
+    public long getIncomeNumber(@PathVariable String level) {
+        return enquiryService.getIncomeNumber(level); 
+    }
+    
 }

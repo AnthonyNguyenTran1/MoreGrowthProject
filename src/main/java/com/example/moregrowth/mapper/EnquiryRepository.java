@@ -28,6 +28,8 @@ public interface EnquiryRepository extends MongoRepository<Enquiry, String> {
 
     public long countByContactMethod(String contactMethod);
 
+    public long countByIncomeLevel(String level);
+
     @Query(value = "{ 'date' : ?0, 'transactionOutcome' : ?1 }", count = true)
     public long countByDateAndTransactionOutcome(Date date, String outcome);
 
