@@ -22,7 +22,7 @@ public class CreditScoreService {
             String range = enquiry.getCreditScoreRange();
             scoreRanges.add(new ScoreRange(range));
         }
-        long[] ScoreRange = new long[4];
+        long[] ScoreRange = new long[5];
         for (int i=0;i<scoreRanges.size();i++){
             ScoreRange scoreRange2 =scoreRanges.get(i);
             if (scoreRange2.getClassification().equals("Excellent")){
