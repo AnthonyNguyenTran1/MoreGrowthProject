@@ -1,11 +1,6 @@
 {
-  "name": "project-front",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "chart.js": "^4.4.2",
+    "react-chartjs-2": "^5.2.0"
+  }
 }

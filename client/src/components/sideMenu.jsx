@@ -1,13 +1,13 @@
 import React from 'react'
 import { LayoutDashboard, LineChart, Tags } from 'lucide-react'
 import './sideMenu.css'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SideMenu = () => {
   return (
     <nav className='side_menu'>
       <div className='container'>
-        <img src='../../public/MLogoDark.png' className='image' />
+        <img src='/MLogoDark.png' className='image' />
         <div>
           <ul className='menu-items'>
             <li>
