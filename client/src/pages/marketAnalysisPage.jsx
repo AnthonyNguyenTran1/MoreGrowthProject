@@ -1,5 +1,27 @@
+import {
+  ArcElement,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  PointElement,
+  Title,
+  Tooltip
+} from 'chart.js';
 import React, { useEffect, useState } from 'react';
 import { Bar, Doughnut } from "react-chartjs-2";
+
+ChartJS.register(
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const MarketAnalysisPage = () => {
 
@@ -34,7 +56,7 @@ const MarketAnalysisPage = () => {
             setJsonData(dataAll); // Store JSON data in state
             setJsonDataIncomeLow(dataIncomeLow);
             setJsonDataIncomeMedium(dataIncomeMedium);
-            setJsonDataIncomeHigh(dataIncomeHigh); 
+            setJsonDataIncomeHigh(dataIncomeHigh);
 
             setJsonDataCredit(dataCredit);
             setJsonDataTimeframes(dataDecision);
