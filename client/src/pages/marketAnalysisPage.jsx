@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Chart as ChartJS } from "chart.js/auto";
 import { Bar, Doughnut } from "react-chartjs-2";
 
 const MarketAnalysisPage = () => {
@@ -17,13 +16,13 @@ const MarketAnalysisPage = () => {
             const response = await fetch('http://localhost:8080/all');
             const dataAll = await response.json(); 
 
-            const responseIncomeLow = await fetch('http://localhost:8080/incomelevel/{Low}');
+            const responseIncomeLow = await fetch('http://localhost:8080/incomelevel/Low');
             const dataIncomeLow = await responseIncomeLow.json();
 
-            const responseIncomeMedium = await fetch('http://localhost:8080/incomelevel/{Medium}');
+            const responseIncomeMedium = await fetch('http://localhost:8080/incomelevel/Medium');
             const dataIncomeMedium = await responseIncomeMedium.json();
 
-            const responseIncomeHigh = await fetch('http://localhost:8080/incomelevel/{High}');
+            const responseIncomeHigh = await fetch('http://localhost:8080/incomelevel/High');
             const dataIncomeHigh = await responseIncomeHigh.json(); 
 
             const responseCredit = await fetch('http://localhost:8080/classify');
