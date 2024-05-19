@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.moregrowth.model.Enquiry;
 import com.example.moregrowth.service.EnquiryService;
 
+
+
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class EnquiryController {
 
     @Autowired
@@ -137,4 +141,23 @@ public class EnquiryController {
     public void deleteEnquiry(@PathVariable String id) {
         EnquiryService.deleteById(id);
     }
+
+    //get number of different level of income
+    @GetMapping("incomelevel/{level}")
+    public long getIncomeNumber(@PathVariable String level) {
+        return enquiryService.getIncomeNumber(level); 
+    }
+
+    public Double getemail() {
+        return (double)enquiryService.countByContactMethod("E-mail")/enquiryService.getTotalEnquiry();
+    }
+
+    public Double getInstagram() {
+        return (double)enquiryService.countByContactMethod("Instagram")/enquiryService.getTotalEnquiry();
+    }
+
+    public Double getFacebook() {
+        return (double)enquiryService.countByContactMethod("Facebook")/enquiryService.getTotalEnquiry();
+    }
+    
 }

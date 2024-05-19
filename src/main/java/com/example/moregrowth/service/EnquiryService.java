@@ -92,6 +92,10 @@ public class EnquiryService {
         return enquiryRepository.findByTransactionOutcome(string);
     }
 
+    public long getIncomeNumber(String level) {
+        return enquiryRepository.countByIncomeLevel(level);
+    }
+
 
     
 
