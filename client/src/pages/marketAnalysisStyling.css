@@ -1,0 +1,49 @@
+.marketAnalysisStyle {
+    /*display:flex*/
+}
+
+.dataCard {
+    padding: 10px; /* 调整容器内的间距 */
+}
+
+.creditRange {
+    margin: 3%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.methOfCredit {
+    height: 350px;
+}
+
+.dataCards {
+    display: flex;
+    width: 100%;
+}
+
+.creditRange {
+    height: 340px;
+    width: 300px;
+}
+
+.charts-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px; /* 根据需要调整间距 */
+}
+
+.pageHeaderStyle {
+    margin-left: 3%;
+    margin-top: 3%;
+    display: flex;
+}
+
+.barformatted {
+    height: 340px;
+    width: 300px;
+  }
