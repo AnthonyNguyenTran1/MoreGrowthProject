@@ -1,27 +1,8 @@
-import {
-  ArcElement,
-  BarElement,
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  PointElement,
-  Title,
-  Tooltip
-} from 'chart.js';
 import React, { useEffect, useState } from 'react';
 import { Bar, Doughnut } from "react-chartjs-2";
+import './marketAnalysisStyling.css';
 
-ChartJS.register(
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+
 
 const MarketAnalysisPage = () => {
 
@@ -29,6 +10,7 @@ const MarketAnalysisPage = () => {
   const [jsonDataIncomeLow, setJsonDataIncomeLow] = useState(null);
   const [jsonDataIncomeMedium, setJsonDataIncomeMedium] = useState(null);
   const [jsonDataIncomeHigh, setJsonDataIncomeHigh] = useState(null);
+  const [jsonDataIncomeVeryHigh, setJsonDataIncomeVeryHigh] = useState(null);
   const [jsonDataCredit, setJsonDataCredit] = useState([]);
   const [jsonDataTimeframes, setJsonDataTimeframes] = useState(null);
 
@@ -45,7 +27,10 @@ const MarketAnalysisPage = () => {
             const dataIncomeMedium = await responseIncomeMedium.json();
 
             const responseIncomeHigh = await fetch('http://localhost:8080/incomelevel/High');
-            const dataIncomeHigh = await responseIncomeHigh.json(); 
+            const dataIncomeHigh = await responseIncomeHigh.json();
+
+            const responseIncomeVeryHigh = await fetch('http://localhost:8080/incomelevel/Very High');
+            const dataIncomeVeryHigh = await responseIncomeVeryHigh.json();
 
             const responseCredit = await fetch('http://localhost:8080/classify');
             const dataCredit = await responseCredit.json();
@@ -57,6 +42,7 @@ const MarketAnalysisPage = () => {
             setJsonDataIncomeLow(dataIncomeLow);
             setJsonDataIncomeMedium(dataIncomeMedium);
             setJsonDataIncomeHigh(dataIncomeHigh);
+            setJsonDataIncomeVeryHigh(dataIncomeVeryHigh);
 
             setJsonDataCredit(dataCredit);
             setJsonDataTimeframes(dataDecision);
@@ -80,64 +66,70 @@ const MarketAnalysisPage = () => {
 
   return (
     
-    <div> 
+    <div className='dashBoardStyle charts-container'>
+      <div className='pageHeaderStyle'>
         <h1>Market Analysis Page</h1>
+      </div>
+      <div className='dataCards'>
+        <div className='creditRange methOfCredit barFormatted'>
+            <Doughnut
+                data={{
+                  labels: ["Low", "Medium", "High","Very High"],
+                  datasets: [
+                    {
+                      label: "Leads",
+                      data: [jsonDataIncomeLow, jsonDataIncomeMedium, jsonDataIncomeHigh,jsonDataIncomeVeryHigh]
+                    }
+                  ],
+                }}
+                options={{
+                  plugins: {
+                    title: {
+                      text: "Credit Score Classify"
+                    }
+                  }
+                }}
+                /> 
+        
+        </div>
 
-    
-      <div>
-
-      <Doughnut
-          data={{
-            labels: ["Low", "Medium", "High"],
-            datasets: [
-              {
-                label: "Leads",
-                data: [jsonDataIncomeLow, jsonDataIncomeMedium, jsonDataIncomeHigh],
+        <div className='dataCards creditRange methOfCredit barFormatted'>
+          <Bar
+            data={{
+              labels: ["Excellent", "Very Good", "Average", "Fair","Low"],
+              datasets: [
+                {
+                  label: "Leads",
+                  data: jsonDataCredit,
+                }
+              ],
+            }}
+            options={{
+              plugins: {
+                title: {
+                  text: "Credit Range"
+                }
               }
-            ],
-          }}
-          /> 
-      
+            }}
+            /> 
         </div>
       
-      <div>
-        <h2> Credit Score Chart </h2>
-        <Bar
-          data={{
-            labels: ["Excellent", "Very Good", "Average", "Fair"],
-            datasets: [
-              {
-                label: "Leads",
-                data: jsonDataCredit,
-              }
-            ],
-          }}
-          /> 
-      </div>
-
-
-      <div>
-        <h2> Decision TimeFrame Chart </h2>
-        <Bar
-          data={{
-            labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
-            datasets: [
-              {
-                label: "Leads",
-                data: jsonDataTimeframes,
-              }
-            ],
-          }}
-          /> 
-      </div>
-
-        {jsonDataCredit ? (
-            <p> {jsonDataCredit} </p> // Display JSON data
-        ) : (
-            <p>Loading data...</p> // Optional loading state
-        )}
-        {/* Add error state handling if needed */}
-
+        <div className='methOfCredit creditRange barFormatted'>
+          <h2> Decision TimeFrame Chart </h2>
+          <Bar
+            data={{
+              labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
+              datasets: [
+                {
+                  label: "Leads",
+                  data: jsonDataTimeframes,
+                }
+              ],
+            }}
+            /> 
+        </div>
+        
+      </div>   
     </div>
 
   )
