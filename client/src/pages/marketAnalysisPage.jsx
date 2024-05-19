@@ -126,10 +126,10 @@ const MarketAnalysisPage = () => {
                 }
               ],
             }}
-            /> 
+            />
         </div>
         
-      </div>   
+      </div>
     </div>
 
   )
