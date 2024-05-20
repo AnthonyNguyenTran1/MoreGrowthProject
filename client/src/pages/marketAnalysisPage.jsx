@@ -18,7 +18,7 @@ const MarketAnalysisPage = () => {
     const fetchData = async () => {
         try {
             const response = await fetch('http://localhost:8080/all');
-            const dataAll = await response.json(); 
+            const dataAll = await response.json();
 
             const responseIncomeLow = await fetch('http://localhost:8080/incomelevel/Low');
             const dataIncomeLow = await responseIncomeLow.json();

@@ -1,0 +1,128 @@
+.enquiryManagementStyle {
+    padding: 20px;
+}
+
+.pageHeaderStyle {
+    margin-left: 3%;
+    margin-top: 3%;
+    display: flex;
+}
+
+
+.searchContainer {
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.searchContainer input {
+    width: 330px;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/*columns setting */
+/* set the width for 1 column*/
+.enquiryTable th:nth-child(1),
+.enquiryTable td:nth-child(1) {
+width: 20%;
+}
+
+/* set the width for 2 column*/
+.enquiryTable th:nth-child(2),
+.enquiryTable td:nth-child(2) {
+  width: 25%;
+}
+
+/* set the width for 3 column*/
+.enquiryTable th:nth-child(3),
+.enquiryTable td:nth-child(3) {
+  width: 20%;
+}
+
+/* set the width for 4 column*/
+.enquiryTable th:nth-child(4),
+.enquiryTable td:nth-child(4) {
+  width: 25%;
+}
+
+
+
+
+.tableContainer {
+    width: 150%; 
+}
+
+.enquiryTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.enquiryTable th,
+.enquiryTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.enquiryTable th {
+    background-color: #f9f9f9;
+}
+
+.enquiryItem {
+    cursor: pointer;
+}
+
+.enquiryItem:hover {
+    background-color: #f0f0f0;
+}
+
+.enquiryDetailsContainer {
+    width: 30%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.enquiryDetails {
+    width: 100%;
+    height: 100%;
+}
+
+.enquiryDetails button {
+    display: block;
+    margin: 20px auto 0 auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    list-style: none;
+}
+
+.pagination li {
+    margin: 0 12px;
+}
+
+.pagination li.active-page {
+    font-weight: bold;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}

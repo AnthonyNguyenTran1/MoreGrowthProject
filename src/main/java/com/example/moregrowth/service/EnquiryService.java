@@ -63,7 +63,7 @@ public class EnquiryService {
         return enquiryRepository.countByStatus(status);
     }
 
-    // 假设您的convertToLocalDateViaSqlDate方法如下定义：
+    
     public Date convertToLocalDateViaSqlDate(LocalDate localDate) {
         ZoneId utcZoneId = ZoneId.of("UTC");
         ZonedDateTime zdtStartOfDay = localDate.atStartOfDay(utcZoneId);
@@ -94,6 +94,10 @@ public class EnquiryService {
 
     public long getIncomeNumber(String level) {
         return enquiryRepository.countByIncomeLevel(level);
+    }
+
+    public long countByInquirySource(String method) {
+        return enquiryRepository.countByInquirySource(method);
     }
 
 

@@ -75,14 +75,14 @@ public class PredictionService {
 
             //get the model in the JAR package
             Resource modelResource = resourceLoader.getResource("classpath:model_Version2.joblib");
-            File tempModelFile = Files.createTempFile("model-", ".joblib").toFile();
+            File tempModelFile = Files.createTempFile("m-", ".joblib").toFile();
             Files.copy(modelResource.getInputStream(), tempModelFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             
 
             // get the resource from the py file
             Resource pythonScriptResource = resourceLoader.getResource("classpath:Local connection without http.py");
             // new a file to store the python file 
-            File tempScript = Files.createTempFile("script-", ".py").toFile();
+            File tempScript = Files.createTempFile("s-", ".py").toFile();
             Files.copy(pythonScriptResource.getInputStream(), tempScript.toPath(), StandardCopyOption.REPLACE_EXISTING);
             tempScript.setExecutable(true);
             // transform the data to json
@@ -93,7 +93,7 @@ public class PredictionService {
             Path tempFile = Files.createTempFile("enquiry", ".json");
             Files.write(tempFile, enquiryJson.getBytes(StandardCharsets.UTF_8));
 
-            // use python script and set the file path
+            // use python script n set the file path
             ProcessBuilder processBuilder = new ProcessBuilder("python", tempScript.getAbsolutePath(), tempModelFile.getAbsolutePath(), tempFile.toString());
             // combine the error info and output infor
             processBuilder.redirectErrorStream(true); 
