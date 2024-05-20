@@ -36,4 +36,6 @@ public interface EnquiryRepository extends MongoRepository<Enquiry, String> {
     @Query
     public List<Enquiry> findByTransactionOutcome(String transactionOutcome);
 
+    public long countByInquirySource(String method);
+
 }

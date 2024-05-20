@@ -110,6 +110,11 @@ public class EnquiryController {
     public long getContactpercentage(@PathVariable String method) {
         return enquiryService.countByContactMethod(method);
     }
+
+    @GetMapping("/inquirySource/{method}")
+    public long getSource(@PathVariable String method) {
+        return enquiryService.countByInquirySource(method);
+    }
     /*
      *
      *

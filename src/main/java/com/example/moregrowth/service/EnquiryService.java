@@ -96,6 +96,10 @@ public class EnquiryService {
         return enquiryRepository.countByIncomeLevel(level);
     }
 
+    public long countByInquirySource(String method) {
+        return enquiryRepository.countByInquirySource(method);
+    }
+
 
     
 
