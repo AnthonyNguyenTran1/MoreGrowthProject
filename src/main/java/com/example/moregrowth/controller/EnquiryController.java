@@ -107,8 +107,8 @@ public class EnquiryController {
     }
     //percentage of all the contact method
     @GetMapping("/Contactpercentage/{method}")
-    public Double getContactpercentage(@PathVariable String method) {
-        return (double)enquiryService.countByContactMethod(method)/enquiryService.getTotalEnquiry();
+    public long getContactpercentage(@PathVariable String method) {
+        return enquiryService.countByContactMethod(method);
     }
     /*
      *
