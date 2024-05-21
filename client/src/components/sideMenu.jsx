@@ -31,14 +31,7 @@ const SideMenu = () => {
           </ul>
         </div>
       </div>
-
     </nav>
-    // <header>
-    //   <nav>
-    //     <NavLink to="/">dashboard</NavLink>
-    //     <NavLink to="market_analysis">market</NavLink>
-    //   </nav>
-    // </header>
   )
 }
 
