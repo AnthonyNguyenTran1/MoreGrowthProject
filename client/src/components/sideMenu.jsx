@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { LayoutDashboard, LineChart, Tags, ChevronFirst, ChevronLast } from 'lucide-react'
+import { LayoutDashboard, LineChart, Tags } from 'lucide-react'
 import './sideMenu.css'
 import { Link, useLocation } from 'react-router-dom'
 

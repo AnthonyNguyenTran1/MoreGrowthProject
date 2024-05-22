@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, defaults } from 'chart.js/auto'
 import { Bar, Doughnut, Line } from 'react-chartjs-2'
+import { CircleHelp } from 'lucide-react'
+
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
 import './dashBoardStyling.css'
 import './pageComponentStyling.css'
 
@@ -10,7 +15,19 @@ defaults.responsive = true
 defaults.plugins.title.display = true;
 defaults.plugins.title.align = "start";
 defaults.plugins.title.color = "black";
-defaults.plugins.title.font.size = 20;
+defaults.plugins.title.font.size = 18.72;
+
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#f5f5f9',
+    color: 'black',
+    maxWidth: 200,
+    fontSize: theme.typography.pxToRem(14),
+    border: '1px solid #dadde9',
+  },
+}));
 
 const DashBoardPage = () => {
   const [totalGoodLeads, setTotalGoodLeads] = useState(null);
@@ -94,7 +111,22 @@ const DashBoardPage = () => {
       <div className=''>
         <div style={{ display: 'flex' }}>
           <div className='dataCard dailyEnq'>
+            <div className='helpStyle'>
+              <h3>Daily-Week Enquiries</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>Reveals the number of enquiries received from each day of the week.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Line
+              style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
                 labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
                 datasets: [
@@ -107,11 +139,7 @@ const DashBoardPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Daily Enquiries",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    display: false
                   }
                 }
               }}
@@ -119,11 +147,37 @@ const DashBoardPage = () => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div className='dataCard leadConversionRate'>
-              <h3>Lead Conversion Rate</h3>
+              <div className='helpStyle'>
+                <h3>Lead Conversion Rate</h3>
+                <HtmlTooltip
+                  title={
+                    <React.Fragment>
+                      <span>The success rate of all potential leads (good quality leads).</span>
+                    </React.Fragment>
+                  }
+                >
+                  <div className='helpStyle'>
+                    <CircleHelp size={16} />
+                  </div>
+                </HtmlTooltip>
+              </div>
               <p className='conversionRateValue'>{conversionRate}</p>
             </div>
             <div className='dataCard totalLeads'>
-              <h3>Total Leads</h3>
+              <div className='helpStyle'>
+                <h3>Total Leads</h3>
+                <HtmlTooltip
+                  title={
+                    <React.Fragment>
+                      <span>Current statistics on potential clients that have purchased, declined, or is still under negotiation</span>
+                    </React.Fragment>
+                  }
+                >
+                  <div className='helpStyle'>
+                    <CircleHelp size={16} />
+                  </div>
+                </HtmlTooltip>
+              </div>
               <div className='totalLeadsSection'>
                 <div className='leadsData'>
                   <div className='dataSection'>
@@ -145,9 +199,24 @@ const DashBoardPage = () => {
             </div>
           </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row'}}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div className='dataCard leadQuality'>
+            <div className='helpStyle'>
+              <h3>Lead Quality</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>Shows the number of 'Good' and 'Bad' quality leads.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Bar
+              style={{ marginBottom: '1.5rem' }}
               data={{
                 labels: ["Good Lead", "Bad Lead"],
                 datasets: [{
@@ -158,18 +227,29 @@ const DashBoardPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Lead Quality",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    displa: false
                   }
                 }
               }}
             />
           </div>
           <div className='dataCard methodOfEnq'>
+            <div className='helpStyle'>
+              <h3>Method of Enquiries</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>Shows different method of enquiries sent to you and its total count from the current exisiting enquiries.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Doughnut
+              style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
                 labels: ["Email", "Social Media", "Phone Call"],
                 datasets: [{
@@ -181,11 +261,7 @@ const DashBoardPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Method of Enquiries",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    display: false
                   }
                 }
               }}
