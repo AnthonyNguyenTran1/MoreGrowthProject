@@ -8,9 +8,9 @@ const SideMenu = () => {
   const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  }
+  // const toggleMenu = () => {
+  //   setIsOpen(!isOpen);
+  // }
 
   return (
     <nav className={`side_menu ${isOpen ? 'open' : 'closed'}`}>

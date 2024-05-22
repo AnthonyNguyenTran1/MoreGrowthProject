@@ -93,106 +93,104 @@ const MarketAnalysisPage = () => {
       <div className='pageHeaderStyling'>
         <h1>Market Analysis Page</h1>
       </div>
-      <div className='pageBodyStyling'>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div className='dataCard creditScoreRange'>
-              <Bar
-                data={{
-                  labels: ["Excellent", "Very Good", "Average", "Fair", "Low"],
-                  datasets: [
-                    {
-                      label: "Leads",
-                      data: jsonDataCredit,
-                    }
-                  ],
-                }}
-                options={{
-                  plugins: {
-                    title: {
-                      text: "Credit Score Range",
-                      font: {
-                        family: "Poppins",
-                        size: 18.72,
-                      }
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className='dataCard creditScoreRange'>
+            <Bar
+              data={{
+                labels: ["Excellent", "Very Good", "Average", "Fair", "Low"],
+                datasets: [
+                  {
+                    label: "Leads",
+                    data: jsonDataCredit,
+                  }
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Credit Score Range",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
                     }
                   }
-                }}
-              />
-            </div>
-            <div className='dataCard decisionTimeFrame'>
-              <Bar
-                data={{
-                  labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
-                  datasets: [
-                    {
-                      label: "Leads",
-                      data: jsonDataTimeframes,
-                    }
-                  ],
-                }}
-                options={{
-                  plugins: {
-                    title: {
-                      text: "Decision TimeFrame Chart",
-                      font: {
-                        family: "Poppins",
-                        size: 18.72,
-                      }
-                    }
-                  }
-                }}
-              />
-            </div>
+                }
+              }}
+            />
           </div>
-          <div style={{ display: 'flex'}}>
-            <div className='dataCard incomeLvl'>
-              <Doughnut
-                data={{
-                  labels: ["Low", "Medium", "High", "Very High"],
-                  datasets: [
-                    {
-                      label: "Leads",
-                      data: [jsonDataIncomeLow, jsonDataIncomeMedium, jsonDataIncomeHigh, jsonDataIncomeVeryHigh]
-                    }
-                  ],
-                }}
-                options={{
-                  plugins: {
-                    title: {
-                      text: "Income Level",
-                      font: {
-                        family: "Poppins",
-                        size: 18.72,
-                      }
+          <div className='dataCard decisionTimeFrame'>
+            <Bar
+              data={{
+                labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
+                datasets: [
+                  {
+                    label: "Leads",
+                    data: jsonDataTimeframes,
+                  }
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Decision TimeFrame Chart",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
                     }
                   }
-                }}
-              />
-            </div>
-            <div className='dataCard sourceOfEnq'>
-              <Pie
-                data={{
-                  labels: ["Instagram Ads", "Facebook Ads", "Property Portal", "Direct Calls"],
-                  datasets: [{
-                    label: "Count",
-                    data: [instagramSourceEnquiry, facebookSourceEnquiry, emailSourceEnquiry, phoneCallSourceEnquiry],
-                    borderRadius: 2
-                  }]
-                }}
-                options={{
-                  plugins: {
-                    title: {
-                      text: "Source of Enquiries",
-                      font: {
-                        family: "Poppins",
-                        size: 18.72,
-                      }
+                }
+              }}
+            />
+          </div>
+        </div>
+        <div style={{ display: 'flex' }}>
+          <div className='dataCard incomeLvl'>
+            <Doughnut
+              data={{
+                labels: ["Low", "Medium", "High", "Very High"],
+                datasets: [
+                  {
+                    label: "Leads",
+                    data: [jsonDataIncomeLow, jsonDataIncomeMedium, jsonDataIncomeHigh, jsonDataIncomeVeryHigh]
+                  }
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Income Level",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
                     }
                   }
-                }}
-              />
-            </div>
+                }
+              }}
+            />
+          </div>
+          <div className='dataCard sourceOfEnq'>
+            <Pie
+              data={{
+                labels: ["Instagram Ads", "Facebook Ads", "Property Portal", "Direct Calls"],
+                datasets: [{
+                  label: "Count",
+                  data: [instagramSourceEnquiry, facebookSourceEnquiry, emailSourceEnquiry, phoneCallSourceEnquiry],
+                  borderRadius: 2
+                }]
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Source of Enquiries",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
+                }
+              }}
+            />
           </div>
         </div>
       </div>

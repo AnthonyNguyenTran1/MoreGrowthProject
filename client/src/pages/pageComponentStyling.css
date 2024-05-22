@@ -16,9 +16,6 @@
   white-space: nowrap;
 }
 
-.pageBodyStyling {
-}
-
 .dataCard {
   display: flex;
   flex-direction: column;
