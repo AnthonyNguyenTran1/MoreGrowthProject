@@ -152,7 +152,8 @@ public class EnquiryController {
     public long getIncomeNumber(@PathVariable String level) {
         return enquiryService.getIncomeNumber(level); 
     }
-
+    
+    //test
     public Double getemail() {
         return (double)enquiryService.countByContactMethod("E-mail")/enquiryService.getTotalEnquiry();
     }

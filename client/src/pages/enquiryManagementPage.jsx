@@ -8,15 +8,15 @@ const EnquiryManagementPage = () => {
   const [currentPage,setCurrentPage] = useState(0);
   const [selectedEnquiry,setSelectedEnquiry] = useState(null);
   const [searchTerm,setSearchTerm] = useState("");
-  const enquiriesPerPage = 15; // 每页显示10个enquiry
+  const enquiriesPerPage = 15; // 每页显示15个enquiry
 
   useEffect(() => {
     // fetch enquiries info from BE APIs
     fetch('http://localhost:8080/all')
-      .then(response => {
+      /*.then(response => {
         console.log('API Response:', response);
         return response.json();
-      })
+      })*/
       .then(data => {
         console.log('Data rece from APIs:', data);
         setEnquiries(data);
@@ -93,7 +93,7 @@ const EnquiryManagementPage = () => {
               </tr>
             </thead>
             <tbody>
-              {/*rendering body of table*/}
+              {/*rendering body of table, we can make this more facy, but idk how, msaybe in css?*/}
               {currentEnquiries.length >= 0 ? (
                 /*us map function to go over all the data and */
                 currentEnquiries.map(enquiry => (
@@ -108,7 +108,7 @@ const EnquiryManagementPage = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4">No enquiries to display as errors</td>
+                  <td colSpan="5">No enquiries to display as errors</td>
                 </tr>
               )}
             </tbody>

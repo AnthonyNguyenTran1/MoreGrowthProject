@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
     @RequestMapping("/")
     public String index() {
-        return "index"; // 这里的index是指src/main/resources/static/index.html
+        return "index"; 
     }
 }

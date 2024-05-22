@@ -11,12 +11,15 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration
 public class AppConfig {
-    
+    //use for the py script as a temp 
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
+
+    /* can be used if we want this method, but just leave it here for future possibilities */
+    /*r not used now though */
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = new ObjectMapper()
