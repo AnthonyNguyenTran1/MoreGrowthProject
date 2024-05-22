@@ -1,13 +1,36 @@
-.marketAnalysisStyle {
-    /*display:flex*/
+.incomeLvl {
+  width: 410px;
+  height: 500px;
+}
+
+.creditScoreRange {
+  width: 550px;
+  height: 600px;
+}
+
+.decisionTimeFrame {
+  width: 550px;
+  height: 600px;
+}
+
+.sourceOfEnq {
+  width: 410px;
+  height: 500px;
+}
+
+/* .marketAnalysisStyle {
 }
 
 .dataCard {
-    padding: 10px; /* 调整容器内的间距 */
+  margin: 3%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .creditRange {
-    margin: 3%;
+    margin: 1%;
     background-color: white;
     border-radius: 20px;
     padding: 1rem;
@@ -34,7 +57,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 30px; /* 根据需要调整间距 */
+    gap: 30px; 
 }
 
 .pageHeaderStyle {
@@ -46,4 +69,5 @@
 .barformatted {
     height: 340px;
     width: 300px;
-  }
+  } */
+

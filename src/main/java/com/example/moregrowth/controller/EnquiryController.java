@@ -105,15 +105,15 @@ public class EnquiryController {
         }
         return res;
     }
-    //percentage of all the contact method
-    @GetMapping("/Contactpercentage/{method}")
-    public long getContactpercentage(@PathVariable String method) {
+
+    @GetMapping("/contactMethod/{method}")
+    public long getContactMethod(@PathVariable String method) {
         return enquiryService.countByContactMethod(method);
     }
 
-    @GetMapping("/inquirySource/{method}")
-    public long getSource(@PathVariable String method) {
-        return enquiryService.countByInquirySource(method);
+    @GetMapping("/inquirySource/{source}")
+    public long getSource(@PathVariable String source) {
+        return enquiryService.countByInquirySource(source);
     }
     /*
      *
@@ -152,18 +152,4 @@ public class EnquiryController {
     public long getIncomeNumber(@PathVariable String level) {
         return enquiryService.getIncomeNumber(level); 
     }
-    
-    //test
-    public Double getemail() {
-        return (double)enquiryService.countByContactMethod("E-mail")/enquiryService.getTotalEnquiry();
-    }
-
-    public Double getInstagram() {
-        return (double)enquiryService.countByContactMethod("Instagram")/enquiryService.getTotalEnquiry();
-    }
-
-    public Double getFacebook() {
-        return (double)enquiryService.countByContactMethod("Facebook")/enquiryService.getTotalEnquiry();
-    }
-    
 }
