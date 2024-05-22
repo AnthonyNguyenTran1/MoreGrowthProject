@@ -1,82 +1,66 @@
-.dashBoardStyle {
-  /* display: flex; */
+/* Total Leads Style */
+.totalLeads {
+  width: 400px;
 }
 
-.pageHeaderStyle {
-  margin-left: 3%;
-  margin-top: 3%;
+.totalLeadsSection {
   display: flex;
+  justify-content: space-between;
+  margin-top: 1.5%;
 }
 
-.dataCard {
-  margin: 3%;
-  background-color: white;
-  border-radius: 20px;
-  padding: 1rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-
-.dataCards {
+.leadsData {
   display: flex;
   width: 100%;
 }
 
-.totalLeads {
+.dataSection {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  margin-right: 25%;
 }
 
-.totalLeadsContainer {
+.dataSection p {
+  margin-top: 4%;
+}
+
+.totalData {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-left: 14%;
-  margin-top: 10%;
 }
 
-.totalLeadsValueTop {
-  font-weight: 600;
-}
-
-.totalLeadsValueBottom {
+.glText {
+  white-space: nowrap;
   font-size: small;
 }
 
-.conversionRate {
-  display: flex;
-  flex-direction: column;
+/* Lead Conversion Rate Style */
+.leadConversionRate {
+  max-width: 245.3px;
 }
 
 .conversionRateValue {
-  font-size: larger;
   display: flex;
   justify-content: center;
+  margin-top: 6%;
 }
 
-.cardDataHeader {
-  font-size: 20px;
-  font-weight: 650;
-  margin-bottom: 10px;
-}
-
+/* Lead Quality Style */
 .leadQuality {
-  height: 340px;
-  width: 300px;
+  width: 30%;
+  height: 600px;
 }
 
-.methOfEnq {
-  height: 350px;
+/* Method of Enquiry Style */
+.methodOfEnq {
+  width: 30%;
+  height: 500px;
 }
 
-.status {
-  display: flex;
-  gap: 16%;
-}
-
-.statusValue {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+/* Daily Enquiries Style */
+.dailyEnq {
+  width: 70%;
+  height: 500px;
 }

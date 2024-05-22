@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Chart as ChartJS, defaults } from 'chart.js/auto'
 import { Bar, Doughnut, Line } from 'react-chartjs-2'
 import './dashBoardStyling.css'
+import './pageComponentStyling.css'
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true
@@ -28,37 +29,37 @@ const DashBoardPage = () => {
     const fetchData = async () => {
       // Fetching data from API, parsing the response JSON data, and updating state variable 
       try {
-        // TotalGoodLeads API
+        // TotalGoodLeads API =====
         const responseTotalGoodLeads = await fetch("http://localhost:8080/totalgoodleads/Good");
         const dataTotalGoodLeads = await responseTotalGoodLeads.json();
         setTotalGoodLeads(dataTotalGoodLeads);
 
-        //TotalBadLeads API
+        //TotalBadLeads API =====
         const responseTotalBadLeads = await fetch("http://localhost:8080/totalgoodleads/Bad");
         const dataTotalBadLeads = await responseTotalBadLeads.json();
         setTotalBadLeads(dataTotalBadLeads);
 
-        // OpenLeads API 
+        // OpenLeads API =====
         const responseOpenLeads = await fetch("http://localhost:8080/Openleads");
         const dataOpenLeads = await responseOpenLeads.json();
         setOpenLeads(dataOpenLeads);
 
-        // ClosedLeads API
+        // ClosedLeads API =====
         const responseClosedLeads = await fetch("http://localhost:8080/Closedleads");
         const dataClosedLeads = await responseClosedLeads.json();
         setClosedLeads(dataClosedLeads);
 
-        // LostLeads API
+        // LostLeads API =====
         const responseLostLeads = await fetch("http://localhost:8080/Lostleads");
         const dataLostLeads = await responseLostLeads.json();
         setLostLeads(dataLostLeads)
 
-        // LeadConversion API
+        // LeadConversion API =====
         const responseConversionRate = await fetch("http://localhost:8080/ConversionRate");
         const dataConversionRate = await responseConversionRate.text();
         setConversionRate(dataConversionRate);
 
-        // MethodOfEnquiry API
+        // MethodOfEnquiry API ======
         const responseSocialMediaMethod = await fetch("http://localhost:8080/contactMethod/Social%20Media");
         const dataSocialMediaMethod = await responseSocialMediaMethod.json();
         setSocialMediaMethod(dataSocialMediaMethod);
@@ -71,7 +72,7 @@ const DashBoardPage = () => {
         const dataPhoneCallMethod = await responsePhoneCallMethod.json();
         setPhoneCallMethod(dataPhoneCallMethod);
 
-        // DailyEnquiries API
+        // DailyEnquiries API =====
         const responseDailyEnquiries = await fetch("http://localhost:8080/past7enquiry");
         const dataDailyEnquiries = await responseDailyEnquiries.json();
         setDailyEnquiries(dataDailyEnquiries)
@@ -86,93 +87,110 @@ const DashBoardPage = () => {
   }, [])
 
   return (
-    <div className='dashBoardStyle'>
-      <div className='pageHeaderStyle'>
-        <h1>Welcome, Vito</h1>
-
+    <div className='pageStyling'>
+      <div className='pageHeaderStyling'>
+        <h1>Welcome, MoreGrowthPro</h1>
       </div>
-      <div className='dataCards'>
-        <div className="dataCard totalLeads">
-          <p className='cardDataHeader'>Total Leads</p>
-          <div className="status">
-            <div className='statusValue'>
-              <p>Open</p>
-              <p>Closed</p>
-              <p>Lost</p>
+      <div className=''>
+        <div style={{ display: 'flex' }}>
+          <div className='dataCard dailyEnq'>
+            <Line
+              data={{
+                labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
+                datasets: [
+                  {
+                    label: "Enquiries",
+                    data: [23, 32, 12, 34, 45, 56, 32]
+                  }
+                ]
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Daily Enquiries",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
+                }
+              }}
+            />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className='dataCard leadConversionRate'>
+              <h3>Lead Conversion Rate</h3>
+              <p className='conversionRateValue'>{conversionRate}</p>
             </div>
-            <div className='statusValue'>
-              <p>{openLeads}</p>
-              <p>{closedLeads}</p>
-              <p>{lostLeads}</p>
-            </div>
-            <div className='totalLeadsContainer'>
-              <p className='totalLeadsValueTop'>{totalGoodLeads}</p>
-              <p className='totalLeadsValueBottom'>No. of total leads</p>
+            <div className='dataCard totalLeads'>
+              <h3>Total Leads</h3>
+              <div className='totalLeadsSection'>
+                <div className='leadsData'>
+                  <div className='dataSection'>
+                    <p>Open</p>
+                    <p>Closed</p>
+                    <p>Lost</p>
+                  </div>
+                  <div className='dataSection'>
+                    <p>{openLeads}</p>
+                    <p>{closedLeads}</p>
+                    <p>{lostLeads}</p>
+                  </div>
+                </div>
+                <div className='totalData'>
+                  <h4>{totalGoodLeads}</h4>
+                  <p className='glText'>No. of total leads</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className='dataCard conversionRate'>
-          <p className='cardDataHeader'>Lead Conversion Rate</p>
-          <p className='conversionRateValue'>{conversionRate}</p>
-        </div>
-      </div>
-      <div className='dataCards'>
-        <div className='dataCard leadQuality'>
-          <Bar
-            data={{
-              labels: ["Good Lead", "Bad Lead"],
-              datasets: [{
-                label: "Enquiries",
-                data: [totalGoodLeads, totalBadLeads]
-              }]
-            }}
-            options={{
-              plugins: {
-                title: {
-                  text: "Lead Quality"
-                }
-              }
-            }}
-          />
-        </div>
-        <div className='dataCard methOfEnq'>
-          <Doughnut
-            data={{
-              labels: ["Email", "Social Media", "Phone Call"],
-              datasets: [{
-                label: "Count",
-                data: [emailMethod, socialMediaMethod, phoneCallMethod],
-                borderRadius: 5
-              }]
-            }}
-            options={{
-              plugins: {
-                title: {
-                  text: "Method of Enquiries"
-                }
-              }
-            }}
-          />
-        </div>
-        <div className='dataCard'>
-          <Line
-            data={{
-              labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
-              datasets: [
-                {
+        <div style={{ display: 'flex', flexDirection: 'row'}}>
+          <div className='dataCard leadQuality'>
+            <Bar
+              data={{
+                labels: ["Good Lead", "Bad Lead"],
+                datasets: [{
                   label: "Enquiries",
-                  data: [23, 32, 12, 34, 45, 56, 32]
+                  data: [totalGoodLeads, totalBadLeads]
+                }]
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Lead Quality",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
                 }
-              ]
-            }}
-            options={{
-              plugins: {
-                title: {
-                  text: "Daily Enquiries"
+              }}
+            />
+          </div>
+          <div className='dataCard methodOfEnq'>
+            <Doughnut
+              data={{
+                labels: ["Email", "Social Media", "Phone Call"],
+                datasets: [{
+                  label: "Count",
+                  data: [emailMethod, socialMediaMethod, phoneCallMethod],
+                  borderRadius: 5
+                }]
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Method of Enquiries",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
                 }
-              }
-            }}
-          />
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>

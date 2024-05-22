@@ -32,7 +32,10 @@ a:hover {
   display: flex;
 }
 
-.main-content{ 
-  display: flex;
-  margin-left: 260px;
+.main-content {
+  margin-left: 300px;
+  max-width: calc(100% - 300px);
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
 }

@@ -11,13 +11,13 @@ function App() {
   return (
     <div className='website'>
       <SideMenu />
-      <main className='main-content'>
+      <div className='main-content'>
         <Routes>
           <Route path="/" element={<DashBoardPage />} />
           <Route path="enquiry_management" element={<EnquiryManagementPage />} />
           <Route path="market_analysis" element={<MarketAnalysisPage />} />
         </Routes>
-      </main>
+      </div>
     </div>
   )
 }
