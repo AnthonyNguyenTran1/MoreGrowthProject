@@ -1,11 +1,25 @@
 .side_menu {
   position: fixed;
-  height: 100vh;
+  height: 100%;
   padding: 0.4%;
   background-color: white;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  width: 260px
+  width: 300px;
+  transition: 0.3s ease;
 }
+
+.sideMenuHeader {
+  display: flex;
+}
+
+/* .side_menu.closed {
+  width: 100px;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+} */
 
 .container {
   display: flex;
@@ -18,18 +32,24 @@
   list-style-type: none;
 }
 
+.menu-items #active {
+  background: rgb(243, 243, 243);
+  border-radius: 1rem;
+}
+
 .menu-item {
   display: flex;
   align-items: center;
   text-decoration: none;
   padding-top: 5%;
   padding-bottom: 5%;
-  padding-left: 1%;
+  padding-left: 4%;
   gap: 4%
 }
 
 .menu-item-text {
   color: black;
+  font-size: 1rem;
 }
 
 .image {

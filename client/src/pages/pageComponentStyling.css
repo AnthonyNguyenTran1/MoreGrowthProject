@@ -1,0 +1,30 @@
+.pageStyling {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+}
+
+.pageHeaderStyling {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin-top: 1%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  white-space: nowrap;
+}
+
+.dataCard {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1.15rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}

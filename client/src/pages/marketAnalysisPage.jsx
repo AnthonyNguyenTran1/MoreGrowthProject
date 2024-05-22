@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Chart as ChartJS, defaults } from 'chart.js/auto'
 import { Bar, Doughnut, Pie } from "react-chartjs-2";
 import './marketAnalysisStyling.css';
+import './pageComponentStyling.css'
 
+defaults.maintainAspectRatio = false;
+defaults.responsive = true
+
+defaults.plugins.title.display = true;
+defaults.plugins.title.align = "start";
+defaults.plugins.title.color = "black";
+defaults.plugins.title.font.size = 20;
 
 
 const MarketAnalysisPage = () => {
@@ -79,101 +88,113 @@ const MarketAnalysisPage = () => {
 
   }, []);
 
-  // Accessing the first element of the dataArray
-  /*const firstElement = jsonDataCredit[0] || null;
-  const secondElement = jsonDataCredit[1] || null;
-  const thirdElement = jsonDataCredit[2] || null;
-  const fourthElement = jsonDataCredit[3] || null; */
-
-
   return (
-
-    <div className='dashBoardStyle charts-container'>
-      <div className='pageHeaderStyle'>
+    <div className='pageStyling'>
+      <div className='pageHeaderStyling'>
         <h1>Market Analysis Page</h1>
       </div>
-      <div className='dataCards'>
-        <div className='creditRange methOfCredit barFormatted'>
-          <Doughnut
-            data={{
-              labels: ["Low", "Medium", "High", "Very High"],
-              datasets: [
-                {
-                  label: "Leads",
-                  data: [jsonDataIncomeLow, jsonDataIncomeMedium, jsonDataIncomeHigh, jsonDataIncomeVeryHigh]
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className='dataCard creditScoreRange'>
+            <Bar
+              data={{
+                labels: ["Excellent", "Very Good", "Average", "Fair", "Low"],
+                datasets: [
+                  {
+                    label: "Leads",
+                    data: jsonDataCredit,
+                  }
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Credit Score Range",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
                 }
-              ],
-            }}
-            options={{
-              plugins: {
-                title: {
-                  text: "Credit Score Classify"
+              }}
+            />
+          </div>
+          <div className='dataCard decisionTimeFrame'>
+            <Bar
+              data={{
+                labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
+                datasets: [
+                  {
+                    label: "Leads",
+                    data: jsonDataTimeframes,
+                  }
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Decision TimeFrame Chart",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
                 }
-              }
-            }}
-          />
-
+              }}
+            />
+          </div>
         </div>
-
-        <div className='dataCards creditRange methOfCredit barFormatted'>
-          <Bar
-            data={{
-              labels: ["Excellent", "Very Good", "Average", "Fair", "Low"],
-              datasets: [
-                {
-                  label: "Leads",
-                  data: jsonDataCredit,
+        <div style={{ display: 'flex' }}>
+          <div className='dataCard incomeLvl'>
+            <Doughnut
+              data={{
+                labels: ["Low", "Medium", "High", "Very High"],
+                datasets: [
+                  {
+                    label: "Leads",
+                    data: [jsonDataIncomeLow, jsonDataIncomeMedium, jsonDataIncomeHigh, jsonDataIncomeVeryHigh]
+                  }
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Income Level",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
                 }
-              ],
-            }}
-            options={{
-              plugins: {
-                title: {
-                  text: "Credit Range"
+              }}
+            />
+          </div>
+          <div className='dataCard sourceOfEnq'>
+            <Pie
+              data={{
+                labels: ["Instagram Ads", "Facebook Ads", "Property Portal", "Direct Calls"],
+                datasets: [{
+                  label: "Count",
+                  data: [instagramSourceEnquiry, facebookSourceEnquiry, emailSourceEnquiry, phoneCallSourceEnquiry],
+                  borderRadius: 2
+                }]
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    text: "Source of Enquiries",
+                    font: {
+                      family: "Poppins",
+                      size: 18.72,
+                    }
+                  }
                 }
-              }
-            }}
-          />
+              }}
+            />
+          </div>
         </div>
-
-        <div className='methOfCredit creditRange barFormatted'>
-          <h2> Decision TimeFrame Chart </h2>
-          <Bar
-            data={{
-              labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
-              datasets: [
-                {
-                  label: "Leads",
-                  data: jsonDataTimeframes,
-                }
-              ],
-            }}
-          />
-        </div>
-
-        <div className='dataCard'>
-          <Pie 
-            data={{
-              labels: ["Instagram Ads", "Facebook Ads", "Property Portal", "Direct Calls"],
-              datasets: [{
-                label: "Count",
-                data: [instagramSourceEnquiry, facebookSourceEnquiry, emailSourceEnquiry, phoneCallSourceEnquiry],
-                borderRadius: 2
-              }]
-            }}
-            options={{
-              plugins: {
-                title: {
-                  text: "Source of Enquiries"
-                }
-              }
-            }}
-          />
-        </div>
-
       </div>
     </div>
-
   )
 }
 

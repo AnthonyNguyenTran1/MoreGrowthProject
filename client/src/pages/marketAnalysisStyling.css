@@ -1,5 +1,24 @@
-.marketAnalysisStyle {
-    /*display:flex*/
+.incomeLvl {
+  width: 410px;
+  height: 500px;
+}
+
+.creditScoreRange {
+  width: 550px;
+  height: 600px;
+}
+
+.decisionTimeFrame {
+  width: 550px;
+  height: 600px;
+}
+
+.sourceOfEnq {
+  width: 410px;
+  height: 500px;
+}
+
+/* .marketAnalysisStyle {
 }
 
 .dataCard {
@@ -38,7 +57,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 30px; /* 根据需要调整间距 */
+    gap: 30px; 
 }
 
 .pageHeaderStyle {
@@ -50,4 +69,5 @@
 .barformatted {
     height: 340px;
     width: 300px;
-  }
+  } */
+
