@@ -13,10 +13,10 @@ const EnquiryManagementPage = () => {
   useEffect(() => {
     // fetch enquiries info from BE APIs
     fetch('http://localhost:8080/all')
-      /*.then(response => {
+      .then(response => {
         console.log('API Response:', response);
         return response.json();
-      })*/
+      })
       .then(data => {
         console.log('Data rece from APIs:', data);
         setEnquiries(data);
