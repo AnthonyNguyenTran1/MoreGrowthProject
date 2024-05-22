@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Bar, Doughnut } from "react-chartjs-2";
 import './marketAnalysisStyling.css';
+import GridLayout from 'react-grid-layout';
 
 
 
@@ -13,6 +14,38 @@ const MarketAnalysisPage = () => {
   const [jsonDataIncomeVeryHigh, setJsonDataIncomeVeryHigh] = useState(null);
   const [jsonDataCredit, setJsonDataCredit] = useState([]);
   const [jsonDataTimeframes, setJsonDataTimeframes] = useState(null);
+
+  const initialLayout = [
+    { i: 'IncomeChart', x: 0, y: 0, w: 4, h: 6 },
+    { i: 'CreditChart', x: 4, y: 0, w: 4, h: 6 },
+    { i: 'DecisionChart', x: 8, y: 0, w: 4, h: 6 }
+  ];
+
+  const [layout, setLayout] = useState(() => {
+    const savedLayout = localStorage.getItem('dashboardLayout');
+    return savedLayout ? JSON.parse(savedLayout) : initialLayout;
+  });
+
+  const onLayoutChange = (newLayout) => {
+    setLayout(newLayout);
+    localStorage.setItem('dashboardLayout', JSON.stringify(newLayout));
+  };
+
+  const handleDragStop = (layout, oldItem, newItem) => {
+    const newLayout = [...layout];
+    const oldItemIndex = newLayout.findIndex(item => item.i === oldItem.i);
+    const newItemIndex = newLayout.findIndex(item => item.i === newItem.i);
+
+    if (oldItemIndex !== -1 && newItemIndex !== -1) {
+      // Swap positions of the items
+      const temp = newLayout[oldItemIndex];
+      newLayout[oldItemIndex] = newLayout[newItemIndex];
+      newLayout[newItemIndex] = temp;
+
+      setLayout(newLayout);
+      localStorage.setItem('dashboardLayout', JSON.stringify(newLayout));
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,8 +103,18 @@ const MarketAnalysisPage = () => {
       <div className='pageHeaderStyle'>
         <h1>Market Analysis Page</h1>
       </div>
+      
       <div className='dataCards'>
-        <div className='creditRange methOfCredit barFormatted'>
+      <GridLayout
+        className="layout"
+        layout={layout}
+        cols={12}
+        rowHeight={30}
+        width={1200}
+        onDragStop={handleDragStop}
+        onLayoutChange={onLayoutChange}>
+        <div key="IncomeChart" className='creditRange methOfCredit barFormatted'>
+        {jsonDataIncomeLow !== null && jsonDataIncomeMedium !== null && jsonDataIncomeHigh !== null && jsonDataIncomeVeryHigh !== null ? (
             <Doughnut
                 data={{
                   labels: ["Low", "Medium", "High","Very High"],
@@ -89,11 +132,15 @@ const MarketAnalysisPage = () => {
                     }
                   }
                 }}
-                /> 
+                />
+              ) : (
+                <p>Loading Income Chart...</p>
+              )} 
         
         </div>
 
-        <div className='dataCards creditRange methOfCredit barFormatted'>
+        <div key="CreditChart" className='dataCards creditRange methOfCredit barFormatted'>
+        {jsonDataCredit.length > 0 ? (
           <Bar
             data={{
               labels: ["Excellent", "Very Good", "Average", "Fair","Low"],
@@ -112,10 +159,14 @@ const MarketAnalysisPage = () => {
               }
             }}
             /> 
+          ) : (
+            <p>Loading Credit Chart...</p>
+          )}
         </div>
       
-        <div className='methOfCredit creditRange barFormatted'>
+        <div key="DecisionChart" className='methOfCredit creditRange barFormatted'>
           <h2> Decision TimeFrame Chart </h2>
+          {jsonDataTimeframes !== null ? (
           <Bar
             data={{
               labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
@@ -127,9 +178,13 @@ const MarketAnalysisPage = () => {
               ],
             }}
             />
+          ) : (
+            <p>Loading Decision TimeFrame Chart...</p>
+          )}
         </div>
-        
+        </GridLayout>
       </div>
+      
     </div>
 
   )
