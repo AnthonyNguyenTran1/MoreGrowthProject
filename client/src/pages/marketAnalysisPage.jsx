@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, defaults } from 'chart.js/auto'
 import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { CircleHelp } from 'lucide-react'
+
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import './marketAnalysisStyling.css';
 import './pageComponentStyling.css'
 
@@ -12,6 +16,17 @@ defaults.plugins.title.align = "start";
 defaults.plugins.title.color = "black";
 defaults.plugins.title.font.size = 20;
 
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#f5f5f9',
+    color: 'black',
+    maxWidth: 250,
+    fontSize: theme.typography.pxToRem(14),
+    border: '1px solid #dadde9',
+  },
+}));
 
 const MarketAnalysisPage = () => {
 
@@ -96,7 +111,22 @@ const MarketAnalysisPage = () => {
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div className='dataCard creditScoreRange'>
+            <div className='helpStyle'>
+              <h3>Credit Score Range</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>A range of credit score from good quality leads.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Bar
+              style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
                 labels: ["Excellent", "Very Good", "Average", "Fair", "Low"],
                 datasets: [
@@ -109,18 +139,29 @@ const MarketAnalysisPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Credit Score Range",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    display: false
                   }
                 }
               }}
             />
           </div>
           <div className='dataCard decisionTimeFrame'>
+            <div className='helpStyle'>
+              <h3>Decision TimeFrame Chart</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>A graph that shows how long a potential lead/client (AKA 'Good' quality lead) takes to make a decision on a property.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Bar
+              style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
                 labels: ["Immediate", "1 month", "<3 months", "<6 months", "6 months", "6+ months", "12+ months"],
                 datasets: [
@@ -133,11 +174,7 @@ const MarketAnalysisPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Decision TimeFrame Chart",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    display: false
                   }
                 }
               }}
@@ -146,7 +183,22 @@ const MarketAnalysisPage = () => {
         </div>
         <div style={{ display: 'flex' }}>
           <div className='dataCard incomeLvl'>
+            <div className='helpStyle'>
+              <h3>Income Level</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>Level of income from a pool of potential clients/leads.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Doughnut
+              style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
                 labels: ["Low", "Medium", "High", "Very High"],
                 datasets: [
@@ -159,18 +211,29 @@ const MarketAnalysisPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Income Level",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    display: false
                   }
                 }
               }}
             />
           </div>
           <div className='dataCard sourceOfEnq'>
+            <div className='helpStyle'>
+              <h3>Source of Enquiries</h3>
+              <HtmlTooltip
+                title={
+                  <React.Fragment>
+                    <span>Where each potential client's/lead's source on property enquiries came from.</span>
+                  </React.Fragment>
+                }
+              >
+                <div className='helpStyle'>
+                  <CircleHelp size={16} />
+                </div>
+              </HtmlTooltip>
+            </div>
             <Pie
+              style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
                 labels: ["Instagram Ads", "Facebook Ads", "Property Portal", "Direct Calls"],
                 datasets: [{
@@ -182,11 +245,7 @@ const MarketAnalysisPage = () => {
               options={{
                 plugins: {
                   title: {
-                    text: "Source of Enquiries",
-                    font: {
-                      family: "Poppins",
-                      size: 18.72,
-                    }
+                    display: false
                   }
                 }
               }}
