@@ -92,12 +92,12 @@ public class EnquiryService {
         return enquiryRepository.findByTransactionOutcome(string);
     }
 
-    public long getIncomeNumber(String level) {
-        return enquiryRepository.countByIncomeLevel(level);
+    public long getIncomeNumber(String level, String outcome) {
+        return enquiryRepository.countByIncomeLevelAndTransactionOutcome(level, outcome);
     }
 
-    public long countByInquirySource(String method) {
-        return enquiryRepository.countByInquirySource(method);
+    public long countByInquirySource(String method, String outcome) {
+        return enquiryRepository.countByInquirySourceAndTransactionOutcome(method, outcome);
     }
 
 

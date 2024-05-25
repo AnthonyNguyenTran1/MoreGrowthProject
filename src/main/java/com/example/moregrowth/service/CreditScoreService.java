@@ -16,7 +16,7 @@ public class CreditScoreService {
 
     public long[] classifyScoreRanges() {
         List<ScoreRange> scoreRanges = new ArrayList<>();
-        List<Enquiry> enquiries = enquiryRepository.findAll(); // 直接使用List<Document>
+        List<Enquiry> enquiries = enquiryRepository.findByTransactionOutcome("Good"); // 直接使用List<Document>
         //MongoCollection<Document> collection = (MongoCollection<Document>) enquiryRepository.findAll();
         for (Enquiry enquiry : enquiries) {
             String range = enquiry.getCreditScoreRange();

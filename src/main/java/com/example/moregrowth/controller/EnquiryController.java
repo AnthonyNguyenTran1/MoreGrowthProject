@@ -113,7 +113,7 @@ public class EnquiryController {
 
     @GetMapping("/inquirySource/{source}")
     public long getSource(@PathVariable String source) {
-        return enquiryService.countByInquirySource(source);
+        return enquiryService.countByInquirySource(source, "Good");
     }
     /*
      *
@@ -150,6 +150,6 @@ public class EnquiryController {
     //get number of different level of income
     @GetMapping("incomelevel/{level}")
     public long getIncomeNumber(@PathVariable String level) {
-        return enquiryService.getIncomeNumber(level); 
+        return enquiryService.getIncomeNumber(level, "Good"); 
     }
 }
