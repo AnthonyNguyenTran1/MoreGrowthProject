@@ -8,6 +8,7 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
 import './dashBoardStyling.css'
 import './pageComponentStyling.css'
+import { ClipLoader } from 'react-spinners';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true
@@ -161,7 +162,13 @@ const DashBoardPage = () => {
                   </div>
                 </HtmlTooltip>
               </div>
+              {conversionRate !== null ? (
               <p className='conversionRateValue'>{conversionRate}</p>
+            ) : (
+              <div className='loader'>
+                <ClipLoader color={"#123abc"} loading={true} size={100} />
+              </div>
+            )}
             </div>
             <div className='dataCard totalLeads'>
               <div className='helpStyle'>
@@ -179,12 +186,15 @@ const DashBoardPage = () => {
                 </HtmlTooltip>
               </div>
               <div className='totalLeadsSection'>
+              {openLeads !== null && closedLeads !== null && lostLeads !== null && totalGoodLeads ? (
+                <>
                 <div className='leadsData'>
                   <div className='dataSection'>
                     <p>Open</p>
                     <p>Closed</p>
                     <p>Lost</p>
                   </div>
+                  
                   <div className='dataSection'>
                     <p>{openLeads}</p>
                     <p>{closedLeads}</p>
@@ -195,6 +205,12 @@ const DashBoardPage = () => {
                   <h4>{totalGoodLeads}</h4>
                   <p className='glText'>No. of total leads</p>
                 </div>
+                </>
+                ) : (
+                  <div className='loader totalLeads'>
+                    <ClipLoader color={"#123abc"} loading={true} size={100} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -215,6 +231,7 @@ const DashBoardPage = () => {
                 </div>
               </HtmlTooltip>
             </div>
+            {totalGoodLeads !== null && totalBadLeads !== null ? (
             <Bar
               style={{ marginBottom: '1.5rem' }}
               data={{
@@ -232,6 +249,11 @@ const DashBoardPage = () => {
                 }
               }}
             />
+          ) : (
+            <div className='loader'>
+              <ClipLoader color={"#123abc"} loading={true} size={100} />
+            </div>
+          )}
           </div>
           <div className='dataCard methodOfEnq'>
             <div className='helpStyle'>
@@ -248,6 +270,7 @@ const DashBoardPage = () => {
                 </div>
               </HtmlTooltip>
             </div>
+            {emailMethod !== null && socialMediaMethod !== null && phoneCallMethod !== null ? (
             <Doughnut
               style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
@@ -266,6 +289,11 @@ const DashBoardPage = () => {
                 }
               }}
             />
+          ) : (
+            <div className='loader'>
+              <ClipLoader color={"#123abc"} loading={true} size={100} />
+            </div>
+          )}
           </div>
         </div>
       </div>
