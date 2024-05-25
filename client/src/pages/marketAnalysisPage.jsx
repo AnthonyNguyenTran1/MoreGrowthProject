@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import './marketAnalysisStyling.css';
 import './pageComponentStyling.css';
+import { ClipLoader } from 'react-spinners';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true
@@ -42,26 +43,8 @@ const MarketAnalysisPage = () => {
   const [instagramSourceEnquiry, setInstragramSourceEnquiry] = useState(null);
   const [facebookSourceEnquiry, setFacebookSourceEnquiry] = useState(null);
 
-  const [layout, setLayout] = useState([
-    { i: 'creditScoreRange', x: 0, y: 0, w: 1, h: 2 },
-    { i: 'decisionTimeFrame', x: 1, y: 0, w: 1, h: 2 },
-    { i: 'incomeLvl', x: 2, y: 0, w: 1, h: 2 },
-    { i: 'sourceOfEnq', x: 0, y: 1, w: 1, h: 2 },
-  ]);
-
-  const onLayoutChange = (newLayout) => {
-    setLayout(newLayout);
-    localStorage.setItem('dashboardLayout', JSON.stringify(newLayout));
-  };
-
-
 
   useEffect(() => {
-
-    const savedLayout = localStorage.getItem('dashboardLayout');
-    if (savedLayout) {
-      setLayout(JSON.parse(savedLayout));
-    }
 
     const fetchData = async () => {
       try {
@@ -144,6 +127,7 @@ const MarketAnalysisPage = () => {
                 </div>
               </HtmlTooltip>
             </div>
+            {jsonDataCredit.length > 0 ? (
             <Bar
               style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
@@ -163,6 +147,11 @@ const MarketAnalysisPage = () => {
                 }
               }}
             />
+          ) : (
+            <div className='loader'>
+              <ClipLoader color={"#123abc"} loading={true} size={100} />
+            </div>
+          )}
           </div>
           <div className='dataCard decisionTimeFrame'>
             <div className='helpStyle'>
@@ -179,6 +168,7 @@ const MarketAnalysisPage = () => {
                 </div>
               </HtmlTooltip>
             </div>
+            {jsonDataTimeframes !== null ? (
             <Bar
               style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
@@ -198,6 +188,11 @@ const MarketAnalysisPage = () => {
                 }
               }}
             />
+          ) : (
+            <div className='loader'>
+              <ClipLoader color={"#123abc"} loading={true} size={100} />
+            </div>
+          )}
           </div>
         </div>
         <div style={{ display: 'flex' }}>
@@ -216,6 +211,7 @@ const MarketAnalysisPage = () => {
                 </div>
               </HtmlTooltip>
             </div>
+            {jsonDataIncomeLow !== null && jsonDataIncomeMedium !== null && jsonDataIncomeHigh !== null && jsonDataIncomeVeryHigh !== null ? (
             <Doughnut
               style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
@@ -235,6 +231,11 @@ const MarketAnalysisPage = () => {
                 }
               }}
             />
+          ) : (
+            <div className='loader'>
+              <ClipLoader color={"#123abc"} loading={true} size={100} />
+            </div>
+          )}
           </div>
           <div className='dataCard sourceOfEnq'>
             <div className='helpStyle'>
@@ -251,6 +252,7 @@ const MarketAnalysisPage = () => {
                 </div>
               </HtmlTooltip>
             </div>
+            {instagramSourceEnquiry !== null && facebookSourceEnquiry !== null && emailSourceEnquiry !== null && phoneCallSourceEnquiry !== null ? (
             <Pie
               style={{ marginBottom: '1.5rem', marginTop: '0.5rem' }}
               data={{
@@ -269,6 +271,11 @@ const MarketAnalysisPage = () => {
                 }
               }}
             />
+          ) : (
+            <div className='loader'>
+              <ClipLoader color={"#123abc"} loading={true} size={100} />
+            </div>
+          )}
           </div>
         </div>
       </div>
