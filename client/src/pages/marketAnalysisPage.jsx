@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, defaults } from 'chart.js/auto'
 import { Bar, Doughnut, Pie } from "react-chartjs-2";
 import { CircleHelp } from 'lucide-react'
-// test test
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import './marketAnalysisStyling.css';
-import './pageComponentStyling.css'
+import './pageComponentStyling.css';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true
@@ -43,7 +42,27 @@ const MarketAnalysisPage = () => {
   const [instagramSourceEnquiry, setInstragramSourceEnquiry] = useState(null);
   const [facebookSourceEnquiry, setFacebookSourceEnquiry] = useState(null);
 
+  const [layout, setLayout] = useState([
+    { i: 'creditScoreRange', x: 0, y: 0, w: 1, h: 2 },
+    { i: 'decisionTimeFrame', x: 1, y: 0, w: 1, h: 2 },
+    { i: 'incomeLvl', x: 2, y: 0, w: 1, h: 2 },
+    { i: 'sourceOfEnq', x: 0, y: 1, w: 1, h: 2 },
+  ]);
+
+  const onLayoutChange = (newLayout) => {
+    setLayout(newLayout);
+    localStorage.setItem('dashboardLayout', JSON.stringify(newLayout));
+  };
+
+
+
   useEffect(() => {
+
+    const savedLayout = localStorage.getItem('dashboardLayout');
+    if (savedLayout) {
+      setLayout(JSON.parse(savedLayout));
+    }
+
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:8080/all');
@@ -254,6 +273,7 @@ const MarketAnalysisPage = () => {
         </div>
       </div>
     </div>
+    
   )
 }
 
