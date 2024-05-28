@@ -32,7 +32,7 @@ public class DecisionService {
     public long[] getTimeFrame() {
         long[] res = new long[7];
 
-        List<Enquiry> enquiries = enquiryRepository.findAll();
+        List<Enquiry> enquiries = enquiryRepository.findByTransactionOutcome("Good");
         for(Enquiry enquiry : enquiries){
             String timeframe = enquiry.getDecisionTimeframe();  // Assuming getTimeFrame() returns the timeframe string
             Integer mappedValue = TIMEFRAME_MAPPING.get(timeframe);
