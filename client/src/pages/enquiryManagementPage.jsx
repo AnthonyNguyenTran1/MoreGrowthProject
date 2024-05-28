@@ -12,7 +12,7 @@ const EnquiryManagementPage = () => {
 
   useEffect(() => {
     // fetch enquiries info from BE APIs
-    fetch('http://localhost:8080/all')
+    fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/all')
       .then(response => {
         console.log('API Response:', response);
         return response.json();

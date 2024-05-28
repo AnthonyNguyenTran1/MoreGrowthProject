@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { Chart as ChartJS, defaults } from 'chart.js/auto'
-import { Bar, Doughnut, Line } from 'react-chartjs-2'
-import { CircleHelp } from 'lucide-react'
+import { defaults } from 'chart.js/auto';
+import { CircleHelp } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Bar, Doughnut, Line } from 'react-chartjs-2';
 
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
-import './dashBoardStyling.css'
-import './pageComponentStyling.css'
 import { ClipLoader } from 'react-spinners';
+import './dashBoardStyling.css';
+import './pageComponentStyling.css';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true
@@ -48,50 +48,50 @@ const DashBoardPage = () => {
       // Fetching data from API, parsing the response JSON data, and updating state variable 
       try {
         // TotalGoodLeads API =====
-        const responseTotalGoodLeads = await fetch("http://localhost:8080/totalgoodleads/Good");
+        const responseTotalGoodLeads = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/totalgoodleads/Good");
         const dataTotalGoodLeads = await responseTotalGoodLeads.json();
         setTotalGoodLeads(dataTotalGoodLeads);
 
         //TotalBadLeads API =====
-        const responseTotalBadLeads = await fetch("http://localhost:8080/totalgoodleads/Bad");
+        const responseTotalBadLeads = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/totalgoodleads/Bad");
         const dataTotalBadLeads = await responseTotalBadLeads.json();
         setTotalBadLeads(dataTotalBadLeads);
 
         // OpenLeads API =====
-        const responseOpenLeads = await fetch("http://localhost:8080/Openleads");
+        const responseOpenLeads = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/Openleads");
         const dataOpenLeads = await responseOpenLeads.json();
         setOpenLeads(dataOpenLeads);
 
         // ClosedLeads API =====
-        const responseClosedLeads = await fetch("http://localhost:8080/Closedleads");
+        const responseClosedLeads = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/Closedleads");
         const dataClosedLeads = await responseClosedLeads.json();
         setClosedLeads(dataClosedLeads);
 
         // LostLeads API =====
-        const responseLostLeads = await fetch("http://localhost:8080/Lostleads");
+        const responseLostLeads = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/Lostleads");
         const dataLostLeads = await responseLostLeads.json();
         setLostLeads(dataLostLeads)
 
         // LeadConversion API =====
-        const responseConversionRate = await fetch("http://localhost:8080/ConversionRate");
+        const responseConversionRate = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/ConversionRate");
         const dataConversionRate = await responseConversionRate.text();
         setConversionRate(dataConversionRate);
 
         // MethodOfEnquiry API ======
-        const responseSocialMediaMethod = await fetch("http://localhost:8080/contactMethod/Social%20Media");
+        const responseSocialMediaMethod = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/contactMethod/Social%20Media");
         const dataSocialMediaMethod = await responseSocialMediaMethod.json();
         setSocialMediaMethod(dataSocialMediaMethod);
 
-        const responseEmailMethod = await fetch("http://localhost:8080/contactMethod/Email");
+        const responseEmailMethod = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/contactMethod/Email");
         const dataEmailMethod = await responseEmailMethod.json();
         setEmailMethod(dataEmailMethod);
 
-        const responsePhoneCallMethod = await fetch("http://localhost:8080/contactMethod/Phone%20Call")
+        const responsePhoneCallMethod = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/contactMethod/Phone%20Call")
         const dataPhoneCallMethod = await responsePhoneCallMethod.json();
         setPhoneCallMethod(dataPhoneCallMethod);
 
         // DailyEnquiries API =====
-        const responseDailyEnquiries = await fetch("http://localhost:8080/past7enquiry");
+        const responseDailyEnquiries = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/past7enquiry");
         const dataDailyEnquiries = await responseDailyEnquiries.json();
         setDailyEnquiries(dataDailyEnquiries)
         console.log(dailyEnquiries)

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Chart as ChartJS, defaults } from 'chart.js/auto'
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
-import { CircleHelp } from 'lucide-react'
-import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
+import { defaults } from 'chart.js/auto';
+import { CircleHelp } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { ClipLoader } from 'react-spinners';
 import './marketAnalysisStyling.css';
 import './pageComponentStyling.css';
-import { ClipLoader } from 'react-spinners';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true
@@ -48,41 +48,41 @@ const MarketAnalysisPage = () => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/all');
+        const response = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/all');
         const dataAll = await response.json();
 
-        const responseIncomeLow = await fetch('http://localhost:8080/incomelevel/Low');
+        const responseIncomeLow = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/incomelevel/Low');
         const dataIncomeLow = await responseIncomeLow.json();
 
-        const responseIncomeMedium = await fetch('http://localhost:8080/incomelevel/Medium');
+        const responseIncomeMedium = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/incomelevel/Medium');
         const dataIncomeMedium = await responseIncomeMedium.json();
 
-        const responseIncomeHigh = await fetch('http://localhost:8080/incomelevel/High');
+        const responseIncomeHigh = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/incomelevel/High');
         const dataIncomeHigh = await responseIncomeHigh.json();
 
-        const responseIncomeVeryHigh = await fetch('http://localhost:8080/incomelevel/Very High');
+        const responseIncomeVeryHigh = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/incomelevel/Very High');
         const dataIncomeVeryHigh = await responseIncomeVeryHigh.json();
 
-        const responseCredit = await fetch('http://localhost:8080/classify');
+        const responseCredit = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/classify');
         const dataCredit = await responseCredit.json();
 
-        const responseDecision = await fetch('http://localhost:8080/TimeFrame');
+        const responseDecision = await fetch('http://mgcrm.ap-southeast-2.elasticbeanstalk.com/TimeFrame');
         const dataDecision = await responseDecision.json();
 
         // SourceOfEnquiry API
-        const responsePhoneCallSourceEnquiry = await fetch("http://localhost:8080/inquirySource/Direct%20Call")
+        const responsePhoneCallSourceEnquiry = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/inquirySource/Direct%20Call")
         const dataPhoneCallSourceEnquiry = await responsePhoneCallSourceEnquiry.json();
         setPhoneCallSourceEnquiry(dataPhoneCallSourceEnquiry);
 
-        const responseEmailSourceEnquiry = await fetch("http://localhost:8080/inquirySource/Property%20Portal")
+        const responseEmailSourceEnquiry = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/inquirySource/Property%20Portal")
         const dataEmailSourceEnquiry = await responseEmailSourceEnquiry.json();
         setEmailSourceEnquiry(dataEmailSourceEnquiry);
 
-        const responseFacebookSourceEnquiry = await fetch("http://localhost:8080/inquirySource/Facebook")
+        const responseFacebookSourceEnquiry = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/inquirySource/Facebook")
         const dataFacebookSourceEnquiry = await responseFacebookSourceEnquiry.json();
         setFacebookSourceEnquiry(dataFacebookSourceEnquiry);
 
-        const responseInstagramSourceEnquiry = await fetch("http://localhost:8080/inquirySource/Instagram%20Ad")
+        const responseInstagramSourceEnquiry = await fetch("http://mgcrm.ap-southeast-2.elasticbeanstalk.com/inquirySource/Instagram%20Ad")
         const dataInstragramSourceEnquiry = await responseInstagramSourceEnquiry.json();
         setInstragramSourceEnquiry(dataInstragramSourceEnquiry);
 
