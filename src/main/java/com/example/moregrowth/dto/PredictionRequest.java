@@ -54,7 +54,7 @@ public class PredictionRequest {
         return date;
     }
     public void setDate(LocalDate date) {
-        //this.date = date;
+        this.date = date;
     }
     private String status;
 
